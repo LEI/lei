@@ -1,0 +1,7 @@
+# TEAM
+
+    Guillaume Frichet -- @LEI
+
+# TECHNOLOGY
+
+    HTML5, CSS3, Jekyll, Ruby
