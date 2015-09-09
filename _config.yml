@@ -2,3 +2,10 @@ name: LEI
 description: '{#dev, #web, #design}'
 author: Guillaume Frichet
 author_email: guillaume.frichet@gmail.com
+category_dir: /
+baseurl:
+url: http://lei.github.io/
+markdown: rdiscount
+#permalink:
+paginate: 3
+exclude: [README.md]
