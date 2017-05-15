@@ -38,11 +38,5 @@ module.exports = {
     /*
      ** Generation
      */
-<<<<<<< HEAD
-    /*generate: {
-        dir: 'docs',
-    }*/
-=======
     // generate: { dir: 'docs' }
->>>>>>> new
 }
