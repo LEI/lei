@@ -11,6 +11,7 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "deploy": "cp -r dist/* ."
+    "copy": "cp -r dist/* .",
+    "dist": "npm run generate && npm run copy"
   }
 }
