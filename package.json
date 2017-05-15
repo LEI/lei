@@ -1,0 +1,9 @@
+{
+  "name": "lei.github.io",
+  "scripts": {
+    "dev": "nuxt"
+  },
+  "dependencies": {
+    "nuxt": "^0.10.7"
+  }
+}
