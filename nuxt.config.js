@@ -38,7 +38,7 @@ module.exports = {
     /*
      ** Generation
      */
-    generate: {
-        dir: 'docs',
-    }
+    // generate: {
+    //     dir: 'docs',
+    // }
 }
