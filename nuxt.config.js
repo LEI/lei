@@ -45,6 +45,10 @@ module.exports = {
         routes: ['/', '/about', '/fr', '/fr/about'],
         // dir: 'docs',
     },
+    // css: [ // https://medium.com/codingthesmartway-com-blog/using-material-design-with-vue-js-2-a938eac53112
+    //     '//fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic',
+    //     '//fonts.googleapis.com/icon?family=Material+Icons',
+    // ],
     /*
      ** Customize the progress-bar color
      */
