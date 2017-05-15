@@ -21,6 +21,7 @@ module.exports = {
      ** Build configuration
      */
     build: {
+        vendor: ['vue-i18n'],
         /*
          ** Run ESLINT on save
          */
@@ -35,8 +36,31 @@ module.exports = {
         //     }
         // }
     },
-    /*
-     ** Generation
-     */
-    // generate: { dir: 'docs' }
+    router: {
+        middleware: 'i18n',
+        // routes: [
+        //     {
+        //         name: 'index',
+        //         path: '/',
+        //         component: 'pages/index.vue',
+        //     },
+        //     {
+        //         name: 'about',
+        //         path: '/about',
+        //         component: 'pages/about.vue',
+        //     },
+        //     /*{
+        //         name: 'category',
+        //         path: '/:slug',
+        //         component: 'pages/_slug/index.vue',
+        //     },*/
+        // ]
+    },
+    plugins: [
+        { src: '~plugins/i18n.js', injectAs: 'i18n' },
+    ],
+    generate: {
+        routes: ['/', '/about', '/fr', '/fr/about'],
+        // dir: 'docs',
+    }
 }
