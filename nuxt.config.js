@@ -34,5 +34,11 @@ module.exports = {
         //         })
         //     }
         // }
+    },
+    /*
+     ** Generation
+     */
+    generate: {
+        dir: 'docs',
     }
 }
