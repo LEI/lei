@@ -13,8 +13,9 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
+    "pull": "git subtree pull --prefix dist origin master",
     "push": "git subtree push --prefix dist origin master",
-    "deploy": "npm run generate && npm run push"
+    "deploy": "npm run generate && cp ./CNAME ./dist/CNAME && git commit -am 'deploy' && npm run push"
   },
   "devDependencies": {
     "vuetify": "^0.11.1"
