@@ -3,7 +3,10 @@ module.exports = {
      ** Build configuration
      */
     build: {
-        vendor: ['vue-i18n'],
+        vendor: [
+            'vue-i18n',
+            'vue-material',
+        ],
         /*
          ** Run ESLINT on save
          */
@@ -19,6 +22,7 @@ module.exports = {
         // }
     },
     router: {
+        // base: '/',
         middleware: 'i18n',
         // routes: [
         //     {
@@ -40,15 +44,17 @@ module.exports = {
     },
     plugins: [
         { src: '~plugins/i18n.js', injectAs: 'i18n' },
+        { src: '~plugins/material.js', injectAs: 'material', ssr: false },
     ],
     generate: {
         routes: ['/', '/about', '/fr', '/fr/about'],
         // dir: 'docs',
     },
-    // css: [ // https://medium.com/codingthesmartway-com-blog/using-material-design-with-vue-js-2-a938eac53112
-    //     '//fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic',
-    //     '//fonts.googleapis.com/icon?family=Material+Icons',
-    // ],
+    css: [
+        //fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic
+        //fonts.googleapis.com/icon?family=Material+Icons
+        // 'vue-material/dist/vue-material.css',
+    ],
     /*
      ** Customize the progress-bar color
      */

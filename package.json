@@ -13,6 +13,10 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "publish": "git subtree push --prefix dist origin master"
+    "push": "git subtree push --prefix dist origin master",
+    "deploy": "npm run generate && npm run push"
+  },
+  "devDependencies": {
+    "vuetify": "^0.11.1"
   }
 }
