@@ -15,7 +15,7 @@
     "generate": "nuxt generate",
     "pull": "git subtree pull --prefix dist origin master",
     "push": "git subtree push --prefix dist origin master",
-    "commit": "cp ./CNAME ./dist/CNAME && git add . && git commit -am 'deploy'",
+    "commit": "git add . && git commit -am 'deploy'",
     "deploy": "npm run generate && npm run commit && npm run push"
   },
   "devDependencies": {
