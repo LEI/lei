@@ -9,11 +9,8 @@
   <!--   </div> -->
   <!-- </div> -->
   <div>
-    <!-- <h1 class="Content__Title">{{ $t('home.title') }}</h1> -->
-    <!-- <p>{{ $t('home.introduction') }}</p> -->
-    <md-avatar class="md-avatar-icon md-large">
-      <md-icon>home</md-icon>
-    </md-avatar>
+    <h1 class="Content__Title">{{ $t('home.title') }}</h1>
+    <p>{{ $t('home.introduction') }}</p>
   </div>
 </template>
 
