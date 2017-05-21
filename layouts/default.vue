@@ -53,7 +53,6 @@ export default {
   //   }
   // },
   data () {
-    console.log('data', this.links)
     var pageList = [
       {
         title: this.$t('links.home'),
@@ -96,7 +95,6 @@ export default {
   },
   methods: {
     path (url) {
-      console.log('links', this.links)
       return (this.$i18n.locale === 'en' ? url : '/' + this.$i18n.locale + url)
     }
   }

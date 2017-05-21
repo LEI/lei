@@ -1,7 +1,7 @@
 <template>
-  <v-sidebar v-model="showSideBar" height="auto"> <!-- left fixed drawer -->
+  <v-sidebar v-model="visible" height="auto"> <!-- left fixed drawer -->
     <v-list two-line dense>
-      <template v-for="item in itemGroup">
+      <template v-for="item in list">
         <v-list-group v-if="item.items">
           <v-list-item slot="item">
           <v-list-tile :avatar="item.icon">
@@ -24,7 +24,7 @@
             <list-link :item="subItem" elem="v-list-tile" :item-class="{list__tile: item.title}"></list-link>
           </v-list-item>
         </v-list-group>
-        <v-subheader class="accent--text" v-else-if="item.header" v-text="item.header" />
+        <v-subheader class="accent-text" v-else-if="item.header" v-text="item.header" />
         <v-divider v-else-if="item.divider" light /> <!-- inset -->
         <v-list-item v-else>
           <list-link :item="item" elem="v-list-tile" :item-class="{list__tile: item.title}"></list-link>
@@ -71,12 +71,6 @@ export default {
   props: {
     visible: { type: Boolean, required: true },
     list: { type: Array, required: true }
-  },
-  data: function () {
-    return {
-      showSideBar: this.visible,
-      itemGroup: this.list
-    }
   }
 }
 </script>
