@@ -1,7 +1,7 @@
 <template>
-  <div class="Content">
-    <div class="container">
-      <h1 class="Content__Title">{{ $t('about.title') }}</h1>
+  <div class="container">
+    <div class="title">
+      <h2>{{ $t('about.title') }}</h2>
       <p>{{ $t('about.introduction') }}</p>
     </div>
   </div>

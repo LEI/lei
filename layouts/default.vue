@@ -19,15 +19,24 @@
     <!--     </nav> -->
     <!--   </div> -->
     <!-- </header> -->
-  <v-app top-toolbar left-fixed-sidebar>
+  <v-app top-toolbar left-fixed-sidebar class="elevation-1">
     <v-toolbar v-bind:class="theme.primary">
-      <v-toolbar-side-icon class="grey--text text--darken-4" @click.native.stop="sidebar.visible = !sidebar.visible" />
+      <v-toolbar-side-icon class="grey--text text--darken-4" @click.native.stop="sidebar = !sidebar" />
       <!-- <v-toolbar-logo></v-toolbar-logo> -->
       <v-toolbar-title v-html="title"></v-toolbar-title>
-      <v-icon>search</v-icon>
+      <!-- <v-icon>search</v-icon> -->
+      <nuxt-link class="" v-if="$i18n.locale === 'en'" :to="`/fr` + $route.fullPath" active-class="none" exact>
+        <v-btn small primary floating secondary>FR</v-btn>
+        <!-- {{ $t('links.french') }} -->
+      </nuxt-link>
+      <nuxt-link class="" v-else :to="$route.fullPath.replace(/^\/[^\/]+/, '')" active-class="none" exact>
+        <v-btn small primary floating secondary>EN</v-btn>
+        <!-- {{ $t('links.english') }} -->
+      </nuxt-link>
     </v-toolbar>
     <main>
-      <v-sidebar left fixed drawer v-model="sidebar.visible">
+      <!-- <v-sidebar left v-model="sidebar" height="auto"> -->
+      <v-sidebar left fixed drawer v-model="sidebar">
         <!-- <v-list> -->
         <!--   <v-list-item v-for="(link, index) in sidebar.list" :key="index"> -->
         <!--     <v-list-tile> -->
@@ -37,12 +46,15 @@
         <!--     </v-list-tile> -->
         <!--   </v-list-item> -->
         <!-- </v-list> -->
-        <v-list two-line>
-          <template v-for="item in sidebar.list">
+        <v-list two-line dense>
+          <template v-for="item in menu">
             <v-subheader v-if="item.header" v-text="item.header" />
             <v-divider v-else-if="item.divider" v-bind:inset="item.inset" />
             <v-list-item v-else v-bind:key="item.title">
-              <v-list-tile :avatar="item.avatar ? true : false" :href="item.href ? item.href : null">
+              <v-list-tile :avatar="item.avatar || item.icon ? true : false" :href="item.href ? item.href : null" :nuxt="item.nuxt">
+                <v-list-tile-avatar v-if="item.icon">
+                  <v-icon>{{ item.icon }}</v-icon>
+                </v-list-tile-avatar>
                 <v-list-tile-avatar v-if="item.avatar">
                   <img v-bind:src="item.avatar" />
                 </v-list-tile-avatar>
@@ -55,6 +67,36 @@
           </template>
         </v-list>
       </v-sidebar>
+
+      <!-- <v-sidebar v-model="sidebar4" height="auto"> -->
+      <!--   <v-list dense> -->
+      <!--     <template v-for="(item,i) in itemGroup"> -->
+      <!--       <v-list-group v-if="item.items"> -->
+      <!--         <v-list-item slot="item"> -->
+      <!--           <v-list-tile ripple> -->
+      <!--             <v-list-tile-title v-text="item.title" /> -->
+      <!--             <v-list-tile-action> -->
+      <!--               <v-icon>keyboard_arrow_down</v-icon> -->
+      <!--             </v-list-tile-action> -->
+      <!--           </v-list-tile> -->
+      <!--         </v-list-item> -->
+      <!--         <v-list-item v-for="(subItem,i) in item.items" :key="i"> -->
+      <!--           <v-list-tile ripple> -->
+      <!--             <v-list-tile-title v-text="subItem.title" /> -->
+      <!--           </v-list-tile> -->
+      <!--         </v-list-item> -->
+      <!--       </v-list-group> -->
+      <!--       <v-subheader v-else-if="item.header" v-text="item.header" /> -->
+      <!--       <v-divider v-else-if="item.divider" light /> -->
+      <!--       <v-list-item v-else> -->
+      <!--         <v-list-tile ripple> -->
+      <!--           <v-list-tile-title v-text="item.title" /> -->
+      <!--         </v-list-tile> -->
+      <!--       </v-list-item> -->
+      <!--     </template> -->
+      <!--   </v-list> -->
+      <!-- </v-sidebar> -->
+
       <v-content>
         <v-container fluid>
           <nuxt/>
@@ -79,18 +121,18 @@ export default {
     return {
       theme: { primary: 'green' },
       title: this.$t('home.title'),
-      sidebar: {
-        visible: false,
-        list: [
-            { header: 'Social' },
-            { title: 'Twitter', href: 'https://twitter.com/LEI', subtitle: 'twitter.com/LEI' },
-            { divider: true, inset: true },
-            { title: 'GitHub', href: 'https://github.com/LEI', subtitle: 'github.com/LEI' },
-            { divider: true, inset: true },
-            { title: 'Keybase', href: 'https://keybase.io/LEI', subtitle: 'keybase.io/LEI' },
-            // { url: '/', text: 'Back to home' },
-        ]
-      },
+      sidebar: false,
+      menu: [
+          { header: 'Pages' },
+          { icon: 'home', title: this.$t('links.home'), href: '/', nuxt: true },
+          { icon: 'account_box', title: this.$t('links.about'), href: '/about', nuxt: true },
+          { divider: true },
+          { header: 'Social' },
+          { title: 'Twitter', href: 'https://twitter.com/LEI', subtitle: 'twitter.com/LEI' },
+          { title: 'GitHub', href: 'https://github.com/LEI', subtitle: 'github.com/LEI' },
+          { title: 'Keybase', href: 'https://keybase.io/LEI', subtitle: 'keybase.io/LEI' },
+          // { url: '/', text: 'Back to home' },
+      ]
     }
   },
   methods: {
