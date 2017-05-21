@@ -83,11 +83,11 @@ export default {
         visible: false,
         list: [
             { header: 'Social' },
-            { title: 'Twitter', href: 'https://twitter.com/LEI' },
+            { title: 'Twitter', href: 'https://twitter.com/LEI', subtitle: 'twitter.com/LEI' },
             { divider: true, inset: true },
-            { title: 'GitHub', href: 'https://github.com/LEI' },
+            { title: 'GitHub', href: 'https://github.com/LEI', subtitle: 'github.com/LEI' },
             { divider: true, inset: true },
-            { title: 'Keybase', href: 'https://keybase.io/LEI' },
+            { title: 'Keybase', href: 'https://keybase.io/LEI', subtitle: 'keybase.io/LEI' },
             // { url: '/', text: 'Back to home' },
         ]
       },
