@@ -27,9 +27,47 @@
       </v-toolbar-items>
     </v-toolbar>
     <main>
-      <m-sidebar :visible="sidebar.visible" :list="sidebar.menu" height="auto"></m-sidebar>
+      <m-sidebar drawer :visible="sidebar.visible" :list="sidebar.menu" height="auto"></m-sidebar>
       <v-content>
         <v-container fluid>
+
+          <v-toolbar class="secondary container mb-3" v-tooltip.top="{ html: 'Nuxt link (to): the browser does not page reload the page' }">
+            <v-icon class="accent--text">check</v-icon>
+            <v-toolbar-title>
+              &lt;nuxt-link to="..."&gt;
+            </v-toolbar-title>
+            <v-spacer></v-spacer>
+            <nuxt-link class="white--text px-3" v-for="(item,index) in pages" :key="index" :to="item.href">
+              {{ item.text }}
+            </nuxt-link>
+          </v-toolbar>
+
+          <v-toolbar class="secondary container mb-3" v-tooltip.top="{ html: 'Vuetify component (href): the browser reloads the page' }">
+            <v-icon class="accent--text">check</v-icon>
+            <v-toolbar-title>
+              &lt;v-toolbar-item href="..."&gt;
+            </v-toolbar-title>
+            <v-spacer></v-spacer>
+            <v-toolbar-items>
+              <v-toolbar-item v-for="(item,index) in pages" :key="index" :href="item.href" ripple> <!-- :nuxt="item.nuxt" -->
+                {{ item.text }}
+              </v-toolbar-item>
+            </v-toolbar-items>
+          </v-toolbar>
+
+          <v-toolbar class="secondary container mb-3" v-tooltip.top="{ html: 'Vuetify component (href) with nuxt option: the browser still reloads the page' }">
+            <v-icon class="warning--text">close</v-icon>
+            <v-toolbar-title>
+              &lt;v-toolbar-item href="..." nuxt&gt;
+            </v-toolbar-title>
+            <v-spacer></v-spacer>
+            <v-toolbar-items>
+              <v-toolbar-item v-for="(item,index) in pages" :key="index" :href="item.href" nuxt ripple>
+                {{ item.text }}
+              </v-toolbar-item>
+            </v-toolbar-items>
+          </v-toolbar>
+
           <nuxt/>
         </v-container>
       </v-content>
