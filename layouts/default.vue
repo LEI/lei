@@ -9,7 +9,7 @@
         <!-- <v-toolbar-item v-for="(item,index) in pageList" :key="index" :href="item.href" :nuxt="item.nuxt" ripple> -->
         <!--   {{ item.title }} -->
         <!-- </v-toolbar-item> -->
-        <list-link v-for="(item,index) in pageList" :key="index" :item="item" :elem="'tollbar-item'" :item-class="{toolbar__item: item.title}"></list-link>
+        <list-link class="hidden-sm-and-down" v-for="(item,index) in pageList" :key="index" :item="item" :elem="'tollbar-item'" :item-class="{toolbar__item: item.title}"></list-link>
         <v-menu bottom left offset-y origin="top right" transition="v-slide-y-transition">
           <v-btn class="mx-3" icon secondary slot="activator" :title="$i18n.locale.toUpperCase()">
             <!-- <v-icon>language</v-icon> -->
