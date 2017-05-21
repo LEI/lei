@@ -2,7 +2,7 @@
   <div class="container">
     <div class="title">
       <h2>{{ $t('about.title') }}</h2>
-      <p>{{ $t('about.introduction') }}</p>
+      <!-- <p>{{ $t('about.introduction') }}</p> -->
     </div>
   </div>
 </template>
