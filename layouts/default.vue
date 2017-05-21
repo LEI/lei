@@ -5,10 +5,12 @@
       <v-toolbar-side-icon class="grey--text text--darken-4" @click.native.stop="sidebar.visible = !sidebar.visible" />
       <!-- <v-toolbar-logo></v-toolbar-logo> -->
       <v-toolbar-title v-html="title"></v-toolbar-title>
+      <!-- <v-spacer></v-spacer> -->
       <v-toolbar-items>
         <v-toolbar-item v-for="(item,index) in nav" :key="index" :href="item.href" :nuxt="item.nuxt">{{ item.text }}</v-toolbar-item>
-        <v-menu bottom left offset-y origin="top right" transition="v-slide-y-transition" style="margin: 10px;">
-          <v-btn icon dark slot="activator">
+        <v-menu bottom left offset-y origin="top right" transition="v-slide-y-transition" style="margin: auto 10px;">
+          <v-btn icon dark slot="activator" :title="$i18n.locale.toUpperCase()">
+            <!-- <v-icon>language</v-icon> -->
             {{ $i18n.locale }}
           </v-btn>
           <v-list>
