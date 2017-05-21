@@ -1,5 +1,4 @@
 <template>
-  <div class="phone-viewport complete-example">
     <!-- <le-header :title="title" :links="links"></le-header> -->
     <!-- <header class="Header"> -->
     <!--   <div class="container"> -->
@@ -20,10 +19,49 @@
     <!--     </nav> -->
     <!--   </div> -->
     <!-- </header> -->
-
-    <nuxt/>
-
-  </div>
+  <v-app top-toolbar left-fixed-sidebar>
+    <v-toolbar v-bind:class="theme.primary">
+      <v-toolbar-side-icon class="grey--text text--darken-4" @click.native.stop="sidebar.visible = !sidebar.visible" />
+      <!-- <v-toolbar-logo></v-toolbar-logo> -->
+      <v-toolbar-title v-html="title"></v-toolbar-title>
+      <v-icon>search</v-icon>
+    </v-toolbar>
+    <main>
+      <v-sidebar left fixed drawer v-model="sidebar.visible">
+        <!-- <v-list> -->
+        <!--   <v-list-item v-for="(link, index) in sidebar.list" :key="index"> -->
+        <!--     <v-list-tile> -->
+        <!--       <v-list-tile-title> -->
+        <!--         <a v-bind:href="link.url">{{ link.text }}</a> -->
+        <!--       </v-list-tile-title> -->
+        <!--     </v-list-tile> -->
+        <!--   </v-list-item> -->
+        <!-- </v-list> -->
+        <v-list> <!-- two-line -->
+          <template v-for="item in sidebar.list">
+            <v-subheader v-if="item.header" v-text="item.header" />
+            <v-divider v-else-if="item.divider" v-bind:inset="item.inset" />
+            <v-list-item v-else v-bind:key="item.title">
+              <v-list-tile :avatar="item.avatar ? true : false" :href="item.href ? item.href : null">
+                <v-list-tile-avatar v-if="item.avatar">
+                  <img v-bind:src="item.avatar" />
+                </v-list-tile-avatar>
+                <v-list-tile-content>
+                  <v-list-tile-title v-html="item.title" />
+                  <v-list-tile-sub-title v-if="item.subtitle" v-html="item.subtitle" />
+                </v-list-tile-content>
+              </v-list-tile>
+            </v-list-item>
+          </template>
+        </v-list>
+      </v-sidebar>
+      <v-content>
+        <v-container fluid>
+          <nuxt/>
+        </v-container>
+      </v-content>
+    </main>
+  </v-app>
 </template>
 
 <script>
@@ -32,15 +70,27 @@ export default {
   components: {
     LeHeader,
   },
+  // asyncData() {
+  //   return {
+  //     sidebar: false
+  //   }
+  // },
   data () {
     return {
+      theme: { primary: 'green' },
       title: this.$t('home.title'),
-      links: [
-        {
-          url: '/',
-          text: 'Back to home',
-        }
-      ]
+      sidebar: {
+        visible: false,
+        list: [
+            { header: 'Social' },
+            { title: 'Twitter', href: 'https://twitter.com/LEI' },
+            { divider: true, inset: true },
+            { title: 'GitHub', href: 'https://github.com/LEI' },
+            { divider: true, inset: true },
+            { title: 'Keybase', href: 'https://keybase.io/LEI' },
+            // { url: '/', text: 'Back to home' },
+        ]
+      },
     }
   },
   methods: {
@@ -52,111 +102,4 @@ export default {
 </script>
 
 <style>
-/* *, *:before, *:after {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-html, body {
-  background-color: #fff;
-  color: #2e2f30;
-  letter-spacing: 0.5px;
-  font-size: 18px;
-  font-family: "Source Sans Pro", Arial, sans-serif;
-  height: 100vh;
-  margin: 0;
-}
-.container {
-  width: 75%;
-  margin: 0 auto;
-}
-.container:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-.Header {
-  color: #fff;
-  height: 80px;
-  line-height: 80px;
-  background-color: #2e2f30;
-}
-.Header__Title {
-  float: left;
-  font-weight: 300;
-  font-size: 30px;
-}
-.Header__Menu {
-  float: right;
-}
-.Header__Link {
-  font-size: 16px;
-  color: #fff;
-  border: 1px solid #fff;
-  padding: 7px 12px;
-  text-transform: uppercase;
-  text-decoration: none;
-  border-radius: 5px;
-  margin-left: 10px;
-}
-.Header__Link:hover {
-  color: #2e2f30;
-  background-color: #fff;
-}
-.nuxt-link-active {
-  color: cyan;
-}
-.Content {
-  padding: 50px 0;
-  text-align: center;
-}
-.Content__Title {
-  font-weight: 300;
-  padding-bottom: 30px;
-}*/
-.complete-example {
-  height: 540px;
-  display: flex;
-  flex-flow: column;
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-
-  .md-fab {
-    margin: 0;
-    position: absolute;
-    bottom: -20px;
-    left: 16px;
-  }
-
-  .md-title {
-    color: #fff;
-  }
-
-  .md-list {
-    overflow: auto;
-  }
-
-  .md-list-action .md-icon {
-    color: rgba(#000, .26);
-  }
-
-  .md-avatar-icon .md-icon {
-    color: #fff !important;
-  }
-
-  .md-sidenav .md-list-text-container > :nth-child(2) {
-    color: rgba(#fff, .54);
-  }
-
-  .md-account-header {
-    .md-list-item:hover .md-button:hover {
-      background-color: inherit;
-    }
-
-    .md-avatar-list .md-list-item-container:hover {
-      background: none !important;
-    }
-  }
-}
 </style>

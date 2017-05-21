@@ -1,3 +1,5 @@
+const { join } = require('path')
+
 module.exports = {
     /*
      ** Build configuration
@@ -5,7 +7,8 @@ module.exports = {
     build: {
         vendor: [
             'vue-i18n',
-            'vue-material',
+            // 'vue-material',
+            'vuetify',
         ],
         /*
          ** Run ESLINT on save
@@ -44,13 +47,16 @@ module.exports = {
     },
     plugins: [
         { src: '~plugins/i18n.js', injectAs: 'i18n' },
-        { src: '~plugins/material.js', injectAs: 'material', ssr: false },
+        // { src: '~plugins/material.js', injectAs: 'material', ssr: false },
+        { src: '~plugins/vuetify.js', injectAs: 'vuetify' },
     ],
     generate: {
         routes: ['/', '/about', '/fr', '/fr/about'],
         // dir: 'docs',
     },
     css: [
+        // { src: 'vuetify/dist/vuetify.min.css' },
+        // { src: join(__dirname, 'css/app.styl'), lang: 'styl' },
         //fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic
         //fonts.googleapis.com/icon?family=Material+Icons
         // 'vue-material/dist/vue-material.css',
@@ -70,7 +76,10 @@ module.exports = {
             { hid: 'description', name: 'description', content: '{#web, #dev, #design}' },
         ],
         link: [
-            { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+            { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+            // { rel: 'preload', as: 'style', href: 'https://fonts.googleapis.com/css?family=Roboto' },
+            { rel: 'stylesheet', as: 'style', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700' },
+            { rel: 'stylesheet', as: 'style', href: 'https://fonts.googleapis.com/css?family=Material+Icons' },
         ]
     },
 }
