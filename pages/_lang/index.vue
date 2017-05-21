@@ -12,10 +12,10 @@
 </template>
 
 <script>
-import Logo from '~components/logo.vue'
+import NuxtLogo from '~components/nuxt-logo.vue'
 export default {
   components: {
-    Logo
+    NuxtLogo
   },
   head () {
     return { title: this.$t('home.title') }
