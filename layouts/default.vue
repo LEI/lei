@@ -2,7 +2,7 @@
     <!-- <le-header :title="title" :links="links"></le-header> -->
   <v-app top-toolbar> <!-- left-fixed-sidebar class="elevation-1" -->
     <v-toolbar> <!-- :class="theme.primary" -->
-      <v-toolbar-side-icon class="secondary-text" @click.native.stop="sidebar.visible = !sidebar.visible" />
+      <v-toolbar-side-icon class="hidden-lg-and-up secondary-text" @click.native.stop="sidebar.visible = !sidebar.visible" />
       <!-- <v-toolbar-logo></v-toolbar-logo> -->
       <v-toolbar-title v-html="title"></v-toolbar-title>
       <!-- <v-spacer></v-spacer> -->
