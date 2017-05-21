@@ -37,7 +37,7 @@
         <!--     </v-list-tile> -->
         <!--   </v-list-item> -->
         <!-- </v-list> -->
-        <v-list> <!-- two-line -->
+        <v-list two-line>
           <template v-for="item in sidebar.list">
             <v-subheader v-if="item.header" v-text="item.header" />
             <v-divider v-else-if="item.divider" v-bind:inset="item.inset" />
