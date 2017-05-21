@@ -1,33 +1,34 @@
 <template>
-  <!-- <v-list-tile :avatar="item.avatar || item.icon" :nuxt="item.nuxt" ripple> -->
-  <nuxt-link v-if="item.nuxt" :to="{path :item.href}" :class="itemClass">
-    <!-- <div v-if="item.title" class="list__tile__content"><div class="list__tile__title">{{item.title}}</div></div> -->
-    <!-- <div v-if="item.action" class="list__tile__action"><v-icon>{{ item.action }}</v-icon></div> -->
-    <v-list-tile-avatar v-if="item.icon">
-      <v-icon>{{ item.icon }}</v-icon>
+  <!-- <v-list-tile :avatar="prop.avatar || prop.icon" :nuxt="prop.nuxt" ripple> -->
+  <nuxt-link v-if="prop.nuxt" :to="typeof prop.href === 'function' ? prop.href() : prop.href" :class="propClass"> <!-- :is="propIs" ripple -->
+    <!-- <div v-if="prop.title" class="list__tile__content"><div class="list__tile__title">{{prop.title}}</div></div> -->
+    <!-- <div v-if="prop.action" class="list__tile__action"><v-icon>{{ prop.action }}</v-icon></div> -->
+    <v-list-tile-avatar v-if="prop.icon">
+      <v-icon>{{ prop.icon }}</v-icon>
     </v-list-tile-avatar>
-    <v-list-tile-content v-if="item.title || item.subTitle">
-      <v-list-tile-title v-if="item.title" v-html="item.title" />
-      <v-list-tile-sub-title v-if="item.subTitle" v-html="item.subTitle" />
+    <v-list-tile-content v-if="prop.title || prop.subTitle">
+      <v-list-tile-title v-if="prop.title" v-html="prop.title" />
+      <v-list-tile-sub-title v-if="prop.subTitle" v-html="prop.subTitle" />
     </v-list-tile-content>
-    <v-list-tile-avatar v-if="item.action">
-      <v-icon>{{ item.action }}</v-icon>
+    <v-list-tile-avatar v-if="prop.action">
+      <v-icon>{{ prop.action }}</v-icon>
     </v-list-tile-avatar>
   </nuxt-link>
-  <a v-else :href="item.href" :class="itemClass" :target="item.target">
-    <!-- <div v-if="item.title" class="list__tile__content"><div class="list__tile__title">{{item.title}}</div></div> -->
-    <!-- <div v-if="item.action" class="list__tile__action"><v-icon>{{ item.action }}</v-icon></div> -->
-    <v-list-tile-avatar v-if="item.icon">
-      <v-icon>{{ item.icon }}</v-icon>
+  <a v-else :href="prop.href" :class="propClass" :target="prop.target"> <!-- :is="propIs" ripple -->
+    <!-- <div v-if="prop.title" class="list__tile__content"><div class="list__tile__title">{{prop.title}}</div></div> -->
+    <!-- <div v-if="prop.action" class="list__tile__action"><v-icon>{{ prop.action }}</v-icon></div> -->
+    <v-list-tile-avatar v-if="prop.icon">
+      <v-icon>{{ prop.icon }}</v-icon>
     </v-list-tile-avatar>
-    <v-list-tile-content v-if="item.title">
-      <v-list-tile-title v-html="item.title" />
-      <v-list-tile-sub-title v-if="item.subTitle" v-html="item.subTitle" />
+    <v-list-tile-content v-if="prop.title">
+      <v-list-tile-title v-html="prop.title" />
+      <v-list-tile-sub-title v-if="prop.subTitle" v-html="prop.subTitle" />
     </v-list-tile-content>
-    <v-list-tile-avatar v-if="item.action">
-      <v-icon>{{ item.action }}</v-icon>
+    <v-list-tile-avatar v-if="prop.action">
+      <v-icon>{{ prop.action }}</v-icon>
     </v-list-tile-avatar>
   </a>
+  <!-- <pre v-else>??? {{ prop }}</pre> -->
   <!-- </v-list-tile> -->
 </template>
 
@@ -37,8 +38,16 @@
 export default {
   name: 'm-list-link',
   props: {
-    itemClass: { type: Object, required: false },
-    item: { type: Object, required: true }
+    item: { type: Object, required: true },
+    elem: { type: String, required: false },
+    itemClass: { type: Object, required: false }
+  },
+  data: function () {
+    return {
+      prop: this.item,
+      propIs: this.elem,
+      propClass: this.itemClass
+    }
   }
 }
 </script>

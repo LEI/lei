@@ -21,13 +21,13 @@
           </v-list-tile>
           </v-list-item>
           <v-list-item v-for="subItem in item.items" :key="subItem.title">
-            <list-link :item="subItem" :item-class="{list__tile: item.title}"></list-link>
+            <list-link :item="subItem" elem="v-list-tile" :item-class="{list__tile: item.title}"></list-link>
           </v-list-item>
         </v-list-group>
-        <!--<v-list-sub-header v-else-if="item.header" v-text="item.header" />-->
+        <v-subheader class="accent--text" v-else-if="item.header" v-text="item.header" />
         <v-divider v-else-if="item.divider" light /> <!-- inset -->
         <v-list-item v-else>
-          <list-link :item="item" :item-class="{list__tile: item.title}"></list-link>
+          <list-link :item="item" elem="v-list-tile" :item-class="{list__tile: item.title}"></list-link>
         </v-list-item>
       </template>
     </v-list>

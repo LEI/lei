@@ -9,7 +9,7 @@
         <!-- <v-toolbar-item v-for="(item,index) in pageList" :key="index" :href="item.href" :nuxt="item.nuxt" ripple> -->
         <!--   {{ item.title }} -->
         <!-- </v-toolbar-item> -->
-        <list-link v-for="(item,index) in pageList" :key="index" :item="item" :item-class="{toolbar__item: item.title}"></list-link>
+        <list-link v-for="(item,index) in pageList" :key="index" :item="item" :elem="'tollbar-item'" :item-class="{toolbar__item: item.title}"></list-link>
         <v-menu bottom left offset-y origin="top right" transition="v-slide-y-transition">
           <v-btn class="mx-3" icon secondary slot="activator" :title="$i18n.locale.toUpperCase()">
             <!-- <v-icon>language</v-icon> -->
@@ -17,7 +17,7 @@
           </v-btn>
           <v-list>
             <v-list-item v-for="(item, index) in langList" :key="index">
-              <list-link :item="item" :item-class="{list__tile: item.title}"></list-link>
+              <list-link :item="item" :elem="'v-list-tile'" :item-class="{list__tile: item.title}"></list-link>
               <!-- <v-list-tile :href="item.href" :nuxt="item.nuxt" ripple> -->
               <!--   <v-list-tile-title v-text="item.title"></v-list-tile-title> -->
               <!-- </v-list-tile> -->
@@ -48,9 +48,10 @@ export default {
   //   }
   // },
   data () {
+    // FIXME: path() update
     var pageList = [
-      { title: this.$t('links.home'), href: this.path('/'), nuxt: true, action: 'home' },
-      { title: this.$t('links.about'), href: this.path('/about'), nuxt: true, action: 'account_box' }
+      { title: this.$t('links.home'), href: function () { return this.path('/') }.bind(this), nuxt: true, action: 'home' },
+      { title: this.$t('links.about'), href: function () { return this.path('/about') }.bind(this), nuxt: true, action: 'account_box' }
     ]
     var langList = [
       { title: this.$t('links.english'), href: this.$route.fullPath.replace(/^\/[^/]+/, ''), nuxt: true },
@@ -73,6 +74,7 @@ export default {
   },
   methods: {
     path (url) {
+      console.log('path?', url, this.$i18n.locale)
       return (this.$i18n.locale === 'en' ? url : '/' + this.$i18n.locale + url)
     }
   }
