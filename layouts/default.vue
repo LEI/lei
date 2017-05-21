@@ -1,7 +1,7 @@
 <template>
     <!-- <le-header :title="title" :links="links"></le-header> -->
   <v-app top-toolbar class="elevation-1"> <!-- left-fixed-sidebar -->
-    <v-toolbar v-bind:class="theme.primary">
+    <v-toolbar> <!-- v-bind:class="theme.primary" -->
       <v-toolbar-side-icon class="grey--text text--darken-4" @click.native.stop="sidebar.visible = !sidebar.visible" />
       <!-- <v-toolbar-logo></v-toolbar-logo> -->
       <v-toolbar-title v-html="title"></v-toolbar-title>
@@ -89,7 +89,7 @@
 import LeHeader from '~components/le-header.vue'
 export default {
   components: {
-    LeHeader,
+    LeHeader
   },
   // asyncData() {
   //   return {
@@ -99,17 +99,17 @@ export default {
   data () {
     var nav = [
       { icon: 'home', text: this.$t('links.home'), href: this.path('/'), nuxt: true },
-      { icon: 'account_box', text: this.$t('links.about'), href: this.path('/about'), nuxt: true },
-    ];
+      { icon: 'account_box', text: this.$t('links.about'), href: this.path('/about'), nuxt: true }
+    ]
     var lang = [
-      { text: this.$t('links.english'), href: this.$route.fullPath.replace(/^\/[^\/]+/, ''), nuxt: true },
+      { text: this.$t('links.english'), href: this.$route.fullPath.replace(/^\/[^/]+/, ''), nuxt: true },
       { text: this.$t('links.french'), href: `/fr` + this.$route.fullPath, nuxt: true }
-    ];
+    ]
     var social = [
       { text: 'Twitter', href: 'https://twitter.com/LEI', sub: 'twitter.com/LEI' },
       { text: 'GitHub', href: 'https://github.com/LEI', sub: 'github.com/LEI' },
-      { text: 'Keybase', href: 'https://keybase.io/LEI', sub: 'keybase.io/LEI' },
-    ];
+      { text: 'Keybase', href: 'https://keybase.io/LEI', sub: 'keybase.io/LEI' }
+    ]
     return {
       nav: nav,
       lang_list: lang,
@@ -118,14 +118,14 @@ export default {
       sidebar: {
         visible: false,
         menu: nav.concat( // [{ divider: true }, { header: 'Locale' }], lang,
-          [{ divider: true }, { header: 'Social' }], social),
-      },
+          [{ divider: true }, { header: 'Social' }], social)
+      }
     }
   },
   methods: {
     path (url) {
       return (this.$i18n.locale === 'en' ? url : '/' + this.$i18n.locale + url)
-    },
+    }
   }
 }
 </script>
