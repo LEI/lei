@@ -30,8 +30,9 @@
       <m-sidebar drawer :visible="sidebar.visible" :list="sidebar.menu" height="auto"></m-sidebar>
       <v-content>
         <v-container fluid>
+          <nuxt/>
 
-          <v-toolbar class="secondary container mb-3" v-tooltip.top="{ html: 'Nuxt link (to): the browser does not page reload the page' }">
+          <v-toolbar class="secondary container mb-3" v-tooltip.top="{ html: 'Nuxt link (to): the browser does not reload the page' }">
             <v-icon class="accent--text">check</v-icon>
             <v-toolbar-title>
               &lt;nuxt-link to="..."&gt;
@@ -42,7 +43,7 @@
             </nuxt-link>
           </v-toolbar>
 
-          <v-toolbar class="secondary container mb-3" v-tooltip.top="{ html: 'Vuetify component (href): the browser reloads the page' }">
+          <v-toolbar class="secondary container mb-3" v-tooltip.top="{ html: 'Vuetify component (href): classic link, the browser reloads the page' }">
             <v-icon class="accent--text">check</v-icon>
             <v-toolbar-title>
               &lt;v-toolbar-item href="..."&gt;
@@ -68,7 +69,6 @@
             </v-toolbar-items>
           </v-toolbar>
 
-          <nuxt/>
         </v-container>
       </v-content>
     </main>
