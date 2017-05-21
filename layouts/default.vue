@@ -102,7 +102,7 @@ export default {
     return {
       pages: pages,
       locales: locales,
-      theme: { primary: 'green' },
+      // theme: { primary: 'green' },
       title: this.$t('home.title'),
       sidebar: {
         visible: false,
