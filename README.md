@@ -23,7 +23,7 @@ For detailed explanation on how things work, checkout the [Nuxt.js docs](https:/
 
 ## Documentation
 
-- [vue.js](https://vuejs.org/v2/api/)
-- [nuxt.js](https://nuxtjs.org/api/)
-- [vue-i18n](https://kazupon.github.io/vue-i18n/)
-- [vuetify](https://vuetifyjs.com/)
+- [Vue.js](https://vuejs.org/v2/api/)
+- [Nuxt.js](https://nuxtjs.org/api/)
+- [vue-i18n](https://kazupon.github.io/vue-i18n/en/)
+- [Vuetify](https://vuetifyjs.com/)
