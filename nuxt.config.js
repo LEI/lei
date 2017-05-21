@@ -9,7 +9,7 @@ module.exports = {
       'firebase',
       'vue-i18n',
       // 'vue-material',
-      'vuetify',
+      'vuetify'
     ],
     /*
      ** Run ESLINT on save
