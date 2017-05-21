@@ -5,9 +5,10 @@
       <h2>{{ $t('home.title') }}</h2>
       <!-- <p>{{ $t('home.introduction') }}</p> -->
     </div>
-    <!-- <v-btn primary>Primary button</v-btn> -->
-    <!-- <v-btn secondary>Secondary button</v-btn> -->
-    <!-- <v-btn success>Success button</v-btn> -->
+    <!-- <v-btn primary>Classic button</v-btn> -->
+    <nuxt-link :to="'/about'">Nuxt link</nuxt-link>
+    <br>
+    <a href="/about">Href</a>
   </div>
 </template>
 
