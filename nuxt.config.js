@@ -80,6 +80,7 @@ module.exports = {
             // { rel: 'preload', as: 'style', href: 'https://fonts.googleapis.com/css?family=Roboto' },
             { rel: 'stylesheet', as: 'style', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700' },
             { rel: 'stylesheet', as: 'style', href: 'https://fonts.googleapis.com/css?family=Material+Icons' },
+            // https://github.com/driftyco/ionicons
         ]
     },
 }
