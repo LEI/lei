@@ -44,13 +44,16 @@ import mSidebar from '~components/m-sidebar.vue'
 var db = app.database()
 export default {
   components: { listLink, mSidebar },
+  firebase: {
+    links: db.ref('links')
+  },
   // asyncData() {
   //   return {
   //     sidebar: false
   //   }
   // },
   data () {
-    // FIXME: path() update
+    console.log('data', this.links)
     var pageList = [
       {
         title: this.$t('links.home'),
@@ -91,12 +94,9 @@ export default {
       )
     }
   },
-  firebase: {
-    // links: this.linksRef.ref('links')
-    links: db.ref('links')
-  },
   methods: {
     path (url) {
+      console.log('links', this.links)
       return (this.$i18n.locale === 'en' ? url : '/' + this.$i18n.locale + url)
     }
   }
