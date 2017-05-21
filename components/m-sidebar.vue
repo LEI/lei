@@ -1,27 +1,38 @@
 <template>
-  <v-sidebar v-model="visible" height="auto"> <!-- left fixed drawer -->
+  <v-sidebar v-model="showSideBar" height="auto"> <!-- left fixed drawer -->
     <v-list two-line dense>
-      <template v-for="item in list">
-        <v-subheader v-if="item.header" v-text="item.header" />
-        <v-divider v-else-if="item.divider && !item.inset" />
-        <v-divider v-else-if="item.divider" inset />
-        <v-list-item v-else :key="item.text">
-          <v-list-tile ripple :avatar="item.avatar || item.icon ? true : false" :href="item.href" :nuxt="item.nuxt">
+      <template v-for="item in itemGroup">
+        <v-list-group v-if="item.items">
+          <v-list-item slot="item">
+          <v-list-tile :avatar="item.icon">
+            <!-- <v-list-tile-title v-text="item.title" /> -->
+            <!-- <v-list-tile-action> -->
+            <!-- </v-list-tile-action> -->
             <v-list-tile-avatar v-if="item.icon">
               <v-icon>{{ item.icon }}</v-icon>
             </v-list-tile-avatar>
-            <v-list-tile-avatar v-if="item.avatar">
-              <img :src="item.avatar" />
-            </v-list-tile-avatar>
             <v-list-tile-content>
-              <v-list-tile-title v-html="item.text" />
-              <v-list-tile-sub-title v-if="item.sub" v-html="item.sub" />
+              <v-list-tile-title v-html="item.title" />
+              <v-list-tile-sub-title v-if="item.subTitle" v-html="item.subTitle" />
             </v-list-tile-content>
+            <v-list-tile-avatar>
+              <v-icon>{{ item.action || 'keyboard_arrow_down' }}</v-icon>
+            </v-list-tile-avatar>
           </v-list-tile>
+          </v-list-item>
+          <v-list-item v-for="subItem in item.items" :key="subItem.title">
+            <list-link :item="subItem" :item-class="{list__tile: item.title}"></list-link>
+          </v-list-item>
+        </v-list-group>
+        <!--<v-list-sub-header v-else-if="item.header" v-text="item.header" />-->
+        <v-divider v-else-if="item.divider" light /> <!-- inset -->
+        <v-list-item v-else>
+          <list-link :item="item" :item-class="{list__tile: item.title}"></list-link>
         </v-list-item>
       </template>
     </v-list>
   </v-sidebar>
+
   <!-- <v-sidebar v-model="sidebar4" height="auto"> -->
   <!--   <v-list dense> -->
   <!--     <template v-for="(item,i) in itemGroup"> -->
@@ -53,18 +64,18 @@
 </template>
 
 <script>
-// import Vue from 'vue'
-
+import listLink from '~components/m-list-link.vue'
 export default {
   name: 'm-sidebar',
+  components: { listLink },
   props: {
-    visible: {
-      type: Boolean,
-      required: false
-    },
-    list: {
-      type: Array,
-      required: false
+    visible: { type: Boolean, required: true },
+    list: { type: Array, required: true }
+  },
+  data: function () {
+    return {
+      showSideBar: this.visible,
+      itemGroup: this.list
     }
   }
 }

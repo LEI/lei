@@ -8,7 +8,8 @@ module.exports = {
     vendor: [
       'vue-i18n',
       // 'vue-material',
-      'vuetify'
+      'vuetify',
+      'firebase',
     ],
     /*
      ** Run ESLINT on save
@@ -47,16 +48,18 @@ module.exports = {
   plugins: [
     { src: '~plugins/i18n.js', injectAs: 'i18n' },
     // { src: '~plugins/material.js', injectAs: 'material', ssr: false },
-    { src: '~plugins/vuetify.js', injectAs: 'vuetify' }
+    { src: '~plugins/vuetify.js' },
+    { src: '~plugins/firebase.js', ssr: false },
   ],
   generate: {
     // dir: 'docs',
     routes: ['/', '/about', '/fr', '/fr/about']
   },
   css: [
+    'normalize.css/normalize.css',
     // 'vue-material/dist/vue-material.css',
     // 'vuetify/dist/vuetify.min.css'
-    { src: join(__dirname, 'src/stylus/app.styl'), lang: 'styl' }
+    { src: join(__dirname, 'stylus/app.styl'), lang: 'styl' }
   ],
   /*
    ** Customize the progress-bar color
