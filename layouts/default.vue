@@ -27,7 +27,7 @@
       </v-toolbar-items>
     </v-toolbar>
     <main>
-      <m-sidebar drawer :visible="sidebar.visible" :list="sidebar.menu" height="auto"></m-sidebar>
+      <m-sidebar :visible="sidebar.visible" :list="sidebar.menu" height="auto"></m-sidebar>
       <v-content>
         <v-container fluid>
           <nuxt/>
