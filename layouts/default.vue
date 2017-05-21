@@ -6,7 +6,7 @@
       <!-- <v-toolbar-logo></v-toolbar-logo> -->
       <v-toolbar-title v-html="title"></v-toolbar-title>
       <v-toolbar-items>
-        <v-toolbar-item v-for="(item,index) in nav" :key="index" href="item.href" :nuxt="item.nuxt">{{ item.text }}</v-toolbar-item>
+        <v-toolbar-item v-for="(item,index) in nav" :key="index" :href="item.href" :nuxt="item.nuxt">{{ item.text }}</v-toolbar-item>
         <v-menu bottom left offset-y origin="top right" transition="v-slide-y-transition" style="margin: 10px;">
           <v-btn icon dark slot="activator">
             {{ $i18n.locale }}
@@ -20,28 +20,9 @@
           </v-list>
         </v-menu>
       </v-toolbar-items>
-      <!-- <v-icon>search</v-icon> -->
-      <!-- <nuxt-link class="" v-if="$i18n.locale === 'en'" :to="`/fr` + $route.fullPath" active-class="none" exact> -->
-      <!--   <v-btn small primary floating secondary>FR</v-btn> -->
-      <!--   <1!-- {{ $t('links.french') }} --1> -->
-      <!-- </nuxt-link> -->
-      <!-- <nuxt-link class="" v-else :to="$route.fullPath.replace(/^\/[^\/]+/, '')" active-class="none" exact> -->
-      <!--   <v-btn small primary floating secondary>EN</v-btn> -->
-      <!--   <1!-- {{ $t('links.english') }} --1> -->
-      <!-- </nuxt-link> -->
     </v-toolbar>
     <main>
-      <v-sidebar v-model="sidebar.visible" height="auto">
-      <!-- <v-sidebar left fixed drawer v-model="sidebar.visible"> -->
-        <!-- <v-list> -->
-        <!--   <v-list-item v-for="(link, index) in sidebar.list" :key="index"> -->
-        <!--     <v-list-tile> -->
-        <!--       <v-list-tile-title> -->
-        <!--         <a v-bind:href="link.url">{{ link.text }}</a> -->
-        <!--       </v-list-tile-title> -->
-        <!--     </v-list-tile> -->
-        <!--   </v-list-item> -->
-        <!-- </v-list> -->
+      <v-sidebar v-model="sidebar.visible" height="auto"> <ç-- left fixed drawer -->
         <v-list two-line dense>
           <template v-for="item in sidebar.menu">
             <v-subheader v-if="item.header" v-text="item.header" />
@@ -56,7 +37,7 @@
                 </v-list-tile-avatar>
                 <v-list-tile-content>
                   <v-list-tile-title v-html="item.text" />
-                  <v-list-tile-sub-title v-if="item.desc" v-html="item.desc" />
+                  <v-list-tile-sub-title v-if="item.sub" v-html="item.sub" />
                 </v-list-tile-content>
               </v-list-tile>
             </v-list-item>
@@ -115,27 +96,27 @@ export default {
   // },
   data () {
     var nav = [
-        { icon: 'home', text: this.$t('links.home'), href: this.path('/'), nuxt: true },
-        { icon: 'account_box', text: this.$t('links.about'), href: this.path('/about'), nuxt: true },
+      { icon: 'home', text: this.$t('links.home'), href: this.path('/'), nuxt: true },
+      { icon: 'account_box', text: this.$t('links.about'), href: this.path('/about'), nuxt: true },
+    ];
+    var lang = [
+      { text: this.$t('links.english'), href: this.$route.fullPath.replace(/^\/[^\/]+/, ''), nuxt: true },
+      { text: this.$t('links.french'), href: `/fr` + this.$route.fullPath, nuxt: true }
+    ];
+    var social = [
+      { text: 'Twitter', href: 'https://twitter.com/LEI', sub: 'twitter.com/LEI' },
+      { text: 'GitHub', href: 'https://github.com/LEI', sub: 'github.com/LEI' },
+      { text: 'Keybase', href: 'https://keybase.io/LEI', sub: 'keybase.io/LEI' },
     ];
     return {
       nav: nav,
-      lang_list: [
-        { value: 'en', text: this.$t('links.english'), href: this.$route.fullPath.replace(/^\/[^\/]+/, ''), nuxt: true },
-        { value: 'fr', text: this.$t('links.french'), href: `/fr` + this.$route.fullPath, nuxt: true }
-      ],
+      lang_list: lang,
       theme: { primary: 'green' },
       title: this.$t('home.title'),
       sidebar: {
-          visible: false,
-          menu: nav.concat([
-              { divider: true },
-              { header: 'Social' },
-              { text: 'Twitter', href: 'https://twitter.com/LEI', desc: 'twitter.com/LEI' },
-              { text: 'GitHub', href: 'https://github.com/LEI', desc: 'github.com/LEI' },
-              { text: 'Keybase', href: 'https://keybase.io/LEI', desc: 'keybase.io/LEI' },
-              // { url: '/', text: 'Back to home' },
-          ]),
+        visible: false,
+        menu: nav.concat( // [{ divider: true }, { header: 'Locale' }], lang,
+          [{ divider: true }, { header: 'Social' }], social),
       },
     }
   },
