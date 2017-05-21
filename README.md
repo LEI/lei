@@ -1,6 +1,6 @@
-# Nuxt.js
+# lei.github.io
 
-> GitHub Pages
+> GitHub User Pages
 
 ## Build Setup
 
@@ -21,7 +21,7 @@ $ npm run generate
 
 For detailed explanation on how things work, checkout the [Nuxt.js docs](https://github.com/nuxt/nuxt.js).
 
-## Documentation
+## Resources
 
 - [Vue.js](https://vuejs.org/v2/api/)
 - [Nuxt.js](https://nuxtjs.org/api/)
