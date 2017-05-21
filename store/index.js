@@ -1,4 +1,8 @@
+// import Vuex from 'vuex'
+// import app from '~plugins/firebase'
+
 export const state = {
+  // db: app.database(),
   locales: ['en', 'fr'],
   locale: 'en'
 }
@@ -10,3 +14,12 @@ export const mutations = {
     }
   }
 }
+
+// const store = function () {
+//   return new Vuex.Store({
+//     state: {
+//     }
+//   })
+// }
+
+// export default store

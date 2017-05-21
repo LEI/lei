@@ -6,10 +6,10 @@ module.exports = {
    */
   build: {
     vendor: [
+      'firebase',
       'vue-i18n',
       // 'vue-material',
       'vuetify',
-      'firebase',
     ],
     /*
      ** Run ESLINT on save
@@ -26,7 +26,7 @@ module.exports = {
     }
   },
   router: {
-    middleware: 'i18n'
+    middleware: ['i18n']
     // routes: [
     //     {
     //         name: 'index',
@@ -46,10 +46,10 @@ module.exports = {
     // ]
   },
   plugins: [
+    { src: '~plugins/firebase.js', injectAs: 'db', ssr: false },
     { src: '~plugins/i18n.js', injectAs: 'i18n' },
     // { src: '~plugins/material.js', injectAs: 'material', ssr: false },
-    { src: '~plugins/vuetify.js' },
-    { src: '~plugins/firebase.js', ssr: false },
+    { src: '~plugins/vuetify.js' }
   ],
   generate: {
     // dir: 'docs',
