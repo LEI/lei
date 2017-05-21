@@ -84,7 +84,11 @@ export default {
       showSideBar: false,
       itemGroup: [{ header: 'Navigation' }].concat(pageList,
         // [{ divider: true }, { title: 'Locales', action: 'keyboard_arrow_down', items: langList }],
-        [{ divider: true }, { header: 'Social' }], this.links)
+        [{ divider: true }, { header: 'Social' }], [
+        { title: 'Twitter', href: 'https://twitter.com/LEI', subTitle: 'twitter.com/LEI', target: '_blank' },
+        { title: 'GitHub', href: 'https://github.com/LEI', subTitle: 'github.com/LEI', target: '_blank' },
+        { title: 'Keybase', href: 'https://keybase.io/LEI', subTitle: 'keybase.io/LEI', target: '_blank' }]
+      )
     }
   },
   firebase: {
