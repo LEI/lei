@@ -38,8 +38,10 @@
 </template>
 
 <script>
+import app from '~plugins/firebase'
 import listLink from '~components/m-list-link.vue'
 import mSidebar from '~components/m-sidebar.vue'
+var db = app.database()
 export default {
   components: { listLink, mSidebar },
   // asyncData() {
@@ -50,17 +52,30 @@ export default {
   data () {
     // FIXME: path() update
     var pageList = [
-      { title: this.$t('links.home'), href: function () { return this.path('/') }.bind(this), nuxt: true, action: 'home' },
-      { title: this.$t('links.about'), href: function () { return this.path('/about') }.bind(this), nuxt: true, action: 'account_box' }
+      {
+        title: this.$t('links.home'),
+        href: function () { return this.path('/') }.bind(this),
+        nuxt: true,
+        action: 'home'
+      },
+      {
+        title: this.$t('links.about'),
+        href: function () { return this.path('/about') }.bind(this),
+        nuxt: true,
+        action: 'account_box'
+      }
     ]
     var langList = [
-      { title: this.$t('links.english'), href: this.$route.fullPath.replace(/^\/[^/]+/, ''), nuxt: true },
-      { title: this.$t('links.french'), href: `/fr` + this.$route.fullPath, nuxt: true }
-    ]
-    var linkList = [
-      { title: 'Twitter', href: 'https://twitter.com/LEI', subTitle: 'twitter.com/LEI', target: '_blank' },
-      { title: 'GitHub', href: 'https://github.com/LEI', subTitle: 'github.com/LEI', target: '_blank' },
-      { title: 'Keybase', href: 'https://keybase.io/LEI', subTitle: 'keybase.io/LEI', target: '_blank' }
+      {
+        title: this.$t('links.english'),
+        href: this.$route.fullPath.replace(/^\/[^/]+/, ''),
+        nuxt: true
+      },
+      {
+        title: this.$t('links.french'),
+        href: `/fr` + this.$route.fullPath,
+        nuxt: true
+      }
     ]
     return {
       pageList: pageList,
@@ -69,12 +84,15 @@ export default {
       showSideBar: false,
       itemGroup: [{ header: 'Navigation' }].concat(pageList,
         // [{ divider: true }, { title: 'Locales', action: 'keyboard_arrow_down', items: langList }],
-        [{ divider: true }, { header: 'Social' }], linkList)
+        [{ divider: true }, { header: 'Social' }], this.links)
     }
+  },
+  firebase: {
+    // links: this.linksRef.ref('links')
+    links: db.ref('links')
   },
   methods: {
     path (url) {
-      console.log('path?', url, this.$i18n.locale)
       return (this.$i18n.locale === 'en' ? url : '/' + this.$i18n.locale + url)
     }
   }
