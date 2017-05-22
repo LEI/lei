@@ -8,7 +8,7 @@ module.exports = {
     vendor: [
       'firebase',
       'vue-i18n',
-      // 'vue-material',
+      'vuefire',
       'vuetify'
     ],
     /*
@@ -46,7 +46,7 @@ module.exports = {
     // ]
   },
   plugins: [
-    { src: '~plugins/firebase.js', injectAs: 'db', ssr: false },
+    { src: '~plugins/vuefire.js', injectAs: 'vuefire', ssr: false },
     { src: '~plugins/i18n.js', injectAs: 'i18n' },
     // { src: '~plugins/material.js', injectAs: 'material', ssr: false },
     { src: '~plugins/vuetify.js' }

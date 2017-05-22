@@ -38,14 +38,23 @@
 </template>
 
 <script>
-import app from '~plugins/firebase'
+// import store from '~store'
 import listLink from '~components/m-list-link.vue'
 import mSidebar from '~components/m-sidebar.vue'
-var db = app.database()
+
+// console.log(store)
 export default {
-  components: { listLink, mSidebar },
-  firebase: {
-    links: db.ref('links')
+  components: {
+    listLink,
+    mSidebar
+  },
+  // firebase: {},
+  computed: {
+    links () {
+      console.log(this.$store)
+      return []
+    }
+      // return this.$store.state.links.list } // db.ref('links')
   },
   // asyncData() {
   //   return {
@@ -79,6 +88,7 @@ export default {
         nuxt: true
       }
     ]
+    console.log(this.$store) // .db.state
     return {
       pageList: pageList,
       langList: langList,

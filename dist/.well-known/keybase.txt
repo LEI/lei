@@ -1,0 +1,74 @@
+==================================================================
+https://keybase.io/lei
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://lei.sh
+  * I am lei (https://keybase.io/lei) on keybase.
+  * I have a public key with fingerprint 4F9C A344 DD36 EED0 C2B1  5753 8B7C F4F8 D5C1 FFBE
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "eldest_kid": "010181cf3648b303ca2fccb3c441af20c1029ba56a612a2afe1ab4f26ff3fe378e660a",
+            "fingerprint": "4f9ca344dd36eed0c2b157538b7cf4f8d5c1ffbe",
+            "host": "keybase.io",
+            "key_id": "8b7cf4f8d5c1ffbe",
+            "kid": "010181cf3648b303ca2fccb3c441af20c1029ba56a612a2afe1ab4f26ff3fe378e660a",
+            "uid": "7d296c79bdb526d6baadda6cfbd30819",
+            "username": "lei"
+        },
+        "revoke": {
+            "sig_ids": [
+                "4129dc27c0deeda393a12b2bcf492499d8741e9596a21b4e9c45327629c732270f"
+            ]
+        },
+        "service": {
+            "hostname": "lei.sh",
+            "protocol": "https:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1495491788,
+    "expire_in": 157680000,
+    "prev": "879681bb19fbe4f526b5a1bedcef757263303ef3ac2611555eee7944dbe91f85",
+    "seqno": 25,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.0.70
+Comment: https://keybase.io/crypto
+
+yMJlAnicrVJvaJVVHL7TqTQI64OI1BicWxCy3HvOe85533PZgpDGyppSpDQdl/Pn
+d+59t9t97+5796+LJRRiVjCkQClLUBoiahKKIdaUJYsGrfwQmNkkSJ0yNwTpU3Xe
+UfSlj50vh/Pj+T2/5/c8Z/LB5Zmmhs+e7/mwPvPNOw3fXrg1mHkla6brSMVmFOXq
+qB+WLigZSGr5/sigHPKwh0Osrc9pqHzP15JYrZWvKcXSEk9jjwglGZccE0mkBSwV
+tYRb61vwgxA49yRqRTYqF6BaqUblmqOlVmjpU2qMzwGMp4nCLGB+qAJtqQ0N09ha
+Ba6xGCdphxOnZAIbotjV3CO/JO8/8P+z7sElusAQwXUglFGMcMOVlMZIrq0yvhdi
+kQITqJblq+DQJYjQzlZUhaG4H1JLk6jg9CYotx1RTITRJNCecYtLX/gSE0WUW0MQ
+KoQJA4pBMMElwYqC0JT5JOBE6MAnJPAs6nXcbthQpJfIU4P+HbwhKToxlWpci3Vc
+crVirVZJcqme2mglBQ2Dyv/dnldR2bhgXMcQVJMoLqMcdkhdi1I+TAWjAgdh2Ipg
+pBJVIR+lCBbw0HMnnQNDaQyB4CFWCguXAbXOIsUkVmA02IAFhPsuArC+1IRjzBgD
+gEC4+BUIbEOG0oUGyjHKEeZ0yoLjdJ6VZW2wCmjnxYkdjZmGpszKFcvSH5tpeuCh
+f/7x4fOr/mAvnfnxk7tTG0dES/PljrFrC2NbJ3eP8vGpp2Gu2NzeeHQGqd3db792
+/fFKvLBlfvPU+sP72r7a04mefWos29cyd22ms7urd6HvWCZbpC/3DJQuTs/u/ag3
+e/JWqfDxk5mreyZuP/zl7NkP7rwwt9q+eOXUuk9vL9Qzg8/92Tu1/vyjsyNXupsn
+dhw4Ejxymj62GLOV89cPzk9ml3Vu3H7pzE/D78ObAz9/sbx9fMsT56b7Og7WT597
+6077e7vuH9r/7pqR77qeieli8fNdV3nLcM9lfmO2fvL465sObf5l3a973/jt7Ka2
+0uqO35u/vtdUWNu17YcjKxbh2MQpDI371o5faoPv793Mn/gLrTNeyA==
+=Nb9b
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/lei
+
+==================================================================
